@@ -9,5 +9,49 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  role     Role    @default(USER)
+  theme    Theme   @default(LIGHT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items    Item[]
+  deleteLogs DeleteLog[]
+}
+
+model Item {
+  id          Int     @id @default(autoincrement())
+  name        String
+  quantity    Int @default(0)
+  price       Float @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DeleteLog {
+  id        Int      @id @default(autoincrement())
+  itemName  String
+  deletedAt DateTime @default(now())
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

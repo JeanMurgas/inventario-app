@@ -100,3 +100,83 @@ export async function createUserByAdmin(formData: FormData) {
   revalidatePath("/admin/users");
 }
 
+export async function updateUser(formData: FormData) {
+  await requireAdmin();
+
+  const userId = Number(formData.get("userId"));
+  const email = String(formData.get("email"));
+  const role = formData.get("role") as Role;
+
+  if (!userId || !email) {
+    return;
+  }
+
+  const existingUser = await users.findFirst({
+    where: {
+      email,
+      NOT: {
+        id: userId,
+      },
+    },
+  });
+
+  if (existingUser) {
+    return;
+  }
+
+  await users.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      email,
+      role,
+    },
+  });
+
+  revalidatePath("/admin/users");
+}
+
+export async function updateOwnProfile(formData: FormData) {
+  const currentUser = await requireAuth();
+
+  const email = String(formData.get("email"));
+  const password = String(formData.get("password"));
+
+  if (!email) {
+    return;
+  }
+
+  const existingUser = await users.findFirst({
+    where: {
+      email,
+      NOT: {
+        id: currentUser.id,
+      },
+    },
+  });
+
+  if (existingUser) {
+    return;
+  }
+
+  const data: {
+    email: string;
+    password?: string;
+  } = {
+    email,
+  };
+
+  if (password && password.length >= 6) {
+    data.password = await bcrypt.hash(password, 10);
+  }
+
+  await users.update({
+    where: {
+      id: currentUser.id,
+    },
+    data,
+  });
+
+  revalidatePath("/profile");
+}

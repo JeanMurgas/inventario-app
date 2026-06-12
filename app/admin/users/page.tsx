@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getAllUsers, changeUserRole, deleteUser, createUserByAdmin } from "../../actions/users";
 import { requireAdmin } from "../../actions/auth";
 
@@ -64,10 +65,18 @@ export default async function AdminUsersPage() {
                 value={user.id}
               />
 
+              <Link href={`/admin/users/${user.id}`}>
+                <button type="button">
+                  Editar
+                </button>
+              </Link>
+
               <button type="submit">
                 Eliminar
               </button>
             </form>
+
+
 
             <hr />
           </li>

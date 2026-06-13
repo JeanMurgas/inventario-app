@@ -82,4 +82,4 @@ admin123
 ## Deployment
 
 Live URL:
-(Add deployed URL here)
+inventario-app-production-eba8.up.railway.app

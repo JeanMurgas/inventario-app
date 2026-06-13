@@ -41,3 +41,62 @@ nav button {
   padding: 8px 12px;
 }
 
+main {
+  width: min(100% - 32px, 900px);
+  margin: 32px auto;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+}
+
+button {
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.8;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid #444;
+  border-radius: 10px;
+}

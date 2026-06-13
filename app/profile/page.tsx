@@ -2,6 +2,7 @@ import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "../generated/prisma/client";
 import { requireAuth } from "../actions/auth";
 import { updateOwnProfile } from "../actions/users";
+import ThemeToggle from "../components/ThemeToggle";
 
 const adapter = new PrismaBetterSqlite3({
   url: process.env.DATABASE_URL!,
@@ -27,7 +28,7 @@ export default async function ProfilePage() {
   return (
     <main>
       <h1>Mi perfil</h1>
-
+      <ThemeToggle currentTheme={user.theme} />
       <form action={updateOwnProfile}>
         <div>
           <label>Email</label>

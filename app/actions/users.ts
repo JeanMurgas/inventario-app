@@ -180,3 +180,24 @@ export async function updateOwnProfile(formData: FormData) {
 
   revalidatePath("/profile");
 }
+
+export async function updateTheme(formData: FormData) {
+  const currentUser = await requireAuth();
+
+  const theme = formData.get("theme") as "LIGHT" | "DARK";
+
+  if (theme !== "LIGHT" && theme !== "DARK") {
+    return;
+  }
+
+  await users.update({
+    where: {
+      id: currentUser.id,
+    },
+    data: {
+      theme,
+    },
+  });
+
+  revalidatePath("/");
+}

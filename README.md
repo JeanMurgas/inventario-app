@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inventory Management App
 
-## Getting Started
+Technical test for inventory management built with Next.js App Router, Prisma, SQLite, JWT authentication and Server Actions.
 
-First, run the development server:
+## Tech Stack
+
+* Next.js 16 (App Router)
+* Prisma 7
+* SQLite
+* JWT Authentication
+* bcryptjs
+* Server Actions
+* Tailwind CSS
+
+## Features
+
+### Authentication
+
+* User registration
+* Login / Logout
+* JWT persistent authentication with httpOnly cookies
+* Protected routes
+* Admin role authorization
+
+### Inventory
+
+* Create item
+* Edit item
+* Delete item
+* User ownership protection
+* Inventory total calculation
+* Quantity validation (0–9999)
+* Delete logs
+
+### Admin
+
+* List users
+* Create users
+* Edit users
+* Delete users
+* Change user roles
+
+### Profile
+
+* Edit own profile
+* Change password
+
+### Theme
+
+* Persistent light/dark mode
+
+## Installation
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+DATABASE_URL=file:./prisma/dev.db
+JWT_SECRET=your_secret_here
+```
 
-## Learn More
+## Seed Admin
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run seed
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Admin credentials:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Email:
+[admin@test.com](mailto:admin@test.com)
 
-## Deploy on Vercel
+Password:
+admin123
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live URL:
+(Add deployed URL here)

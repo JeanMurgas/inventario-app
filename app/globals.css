@@ -1,18 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
 }
 
 html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #020617;
+  --foreground: #e5e7eb;
+  --card: #0f172a;
+  --border: #334155;
+  --muted: #94a3b8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,80 +32,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 18px 32px;
-  border-bottom: 1px solid #333;
-}
-
-nav a {
+a {
   text-decoration: none;
-  font-weight: 500;
 }
 
-nav button {
-  padding: 8px 12px;
-}
-
-main {
-  width: min(100% - 32px, 900px);
-  margin: 32px auto;
-}
-
-h1 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 20px 0 12px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
+button,
 input,
 select {
-  padding: 10px;
-  border: 1px solid #777;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
-}
-
-button {
-  width: fit-content;
-  padding: 10px 14px;
-  border: 1px solid #777;
-  border-radius: 6px;
-  cursor: pointer;
-  background: transparent;
-  color: inherit;
-}
-
-button:hover,
-a:hover {
-  opacity: 0.8;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 16px;
-  margin-bottom: 14px;
-  border: 1px solid #444;
-  border-radius: 10px;
+  font: inherit;
 }

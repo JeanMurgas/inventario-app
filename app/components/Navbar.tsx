@@ -1,35 +1,59 @@
 import Link from "next/link";
-import { getCurrentUser } from "../actions/auth";
-import { logout } from "../actions/auth";
+import { getCurrentUser, logout } from "../actions/auth";
 
 export default async function Navbar() {
   const user = await getCurrentUser();
 
   return (
-    <nav>
-      <Link href="/">Inicio</Link>
+    <header className="border-b border-border bg-card">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="text-lg font-bold tracking-tight">
+          Inventory App
+        </Link>
 
-      {user && (
-        <>
-          <Link href="/dashboard">Dashboard</Link>
-          <Link href="/inventory">Inventario</Link>
-          <Link href="/profile">Perfil</Link>
+        <div className="flex items-center gap-2 text-sm">
+          {user ? (
+            <>
+              <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/dashboard">
+                Dashboard
+              </Link>
 
-          {user.role === "ADMIN" && (
-            <Link href="/admin/users">Usuarios</Link>
+              <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/inventory">
+                Inventario
+              </Link>
+
+              <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/profile">
+                Perfil
+              </Link>
+
+              {user.role === "ADMIN" && (
+                <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/admin/users">
+                  Usuarios
+                </Link>
+              )}
+
+              <form action={logout}>
+                <button
+                  type="submit"
+                  className="rounded-lg border border-border px-3 py-2 hover:bg-background"
+                >
+                  Cerrar sesión
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/login">
+                Inicio
+              </Link>
+
+              <Link className="rounded-lg px-3 py-2 hover:bg-background" href="/signup">
+                Registro
+              </Link>
+            </>
           )}
-
-          <form action={logout}>
-            <button type="submit">Cerrar sesión</button>
-          </form>
-        </>
-      )}
-
-      {!user && (
-        <>
-          <Link href="/signup">Registro</Link>
-        </>
-      )}
-    </nav>
+        </div>
+      </nav>
+    </header>
   );
 }

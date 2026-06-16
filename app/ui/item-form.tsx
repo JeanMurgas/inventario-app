@@ -71,7 +71,7 @@ export default function ItemForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+        className="w-full rounded-lg border border-[#111827] bg-[#111827] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#1f2937] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Guardando..." : "Agregar item"}
       </button>

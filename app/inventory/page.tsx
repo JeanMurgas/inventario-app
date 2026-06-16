@@ -45,6 +45,9 @@ export default async function InventoryPage() {
 
                 <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
                     <h2 className="mb-4 text-xl font-semibold">Items</h2>
+                    <p className="mt-2 text-sm text-muted">
+                        Haz clic en un item para editarlo o eliminarlo.
+                    </p>
 
                     {items.length === 0 ? (
                         <div className="rounded-xl border border-dashed border-border p-8 text-center">

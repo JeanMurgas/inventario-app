@@ -82,7 +82,7 @@ export default function EditItemForm({ item }: { item: Item }) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+        className="rounded-lg border border-[#111827] bg-[#111827] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#1f2937] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Actualizando..." : "Actualizar"}
       </button>

@@ -17,18 +17,16 @@ export default function ThemeToggle({
   }, [currentTheme]);
 
   function applyTheme(newTheme: Theme) {
-  const root = document.documentElement;
+    const root = document.documentElement;
 
-  if (newTheme === "DARK") {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
+    if (newTheme === "DARK") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
   }
-}
 
   async function handleToggle() {
-    console.log("toggle clicked");
-
     const newTheme = theme === "LIGHT" ? "DARK" : "LIGHT";
 
     setTheme(newTheme);
@@ -41,18 +39,14 @@ export default function ThemeToggle({
   }
 
   return (
-    <button
+    <button 
       type="button"
       onClick={handleToggle}
-      style={{
-        padding: "8px 12px",
-        marginBottom: "12px",
-        cursor: "pointer",
-        border: "1px solid gray",
-        borderRadius: "6px",
-      }}
+      className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
     >
-      {theme === "LIGHT" ? "Modo oscuro" : "Modo claro"}
+      {theme === "LIGHT"
+        ? "🌙 Cambiar a modo oscuro"
+        : "☀️ Cambiar a modo claro"}
     </button>
   );
 }
